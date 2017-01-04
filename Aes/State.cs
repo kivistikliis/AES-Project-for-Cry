@@ -198,7 +198,17 @@ namespace Aes
         public State subBytesInv()
         {
             // TODO
-            return null;
+            State s = new State();
+
+            for (int r = 0; r < nrofRow; r++)
+            {
+                for (int c = 0; c < nrofCol; c++)
+                {
+                    s.buf[r, c] = Sbox.invsbox[buf[r, c]];
+                    
+                }
+            }
+            return s;
         }
 
         public State shiftRowsInv()
