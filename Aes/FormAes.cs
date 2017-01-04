@@ -54,8 +54,65 @@ namespace Aes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int c =3%4;
-            button1.Text = c.ToString();
+            byte[] inputKey = readHexString(tbKey.Text);
+            Key key = new Key(inputKey);
+
+            byte[] inputPlain = readAsciiString(tbPlain.Text);
+            State inputState = new State(inputPlain);
+
+            State outputState=EncryptionProgress(inputState,key);
+
+            MessageBox.Show("The cyphertext is:\n"+outputState.ToMatrixString());
+        }
+
+        public State EncryptionProgress(State inputtext,Key inputkey)
+        {
+            State temp;
+
+            temp = inputtext.addRoundKey(inputkey, 0);
+
+            for(int i=1;i<=10;i++)
+            {
+                temp = temp.subBytes();
+                temp = temp.shiftRows();
+                if(i!=10)
+                    temp = temp.mixColumns();
+                temp = temp.addRoundKey(inputkey, i);
+            }
+
+            return temp;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            byte[] inputKey = readHexString(tbKey.Text);
+            Key key = new Key(inputKey);
+
+            byte[] inputCypher = readHexString(tbPlain.Text);
+            State cyphertext = new State(inputCypher);
+
+            State original = DecryptionProgress(cyphertext, key);
+
+            MessageBox.Show("The original text is:\n" +original.ToString());
+
+        }
+
+        public State DecryptionProgress(State inputtext, Key inputkey)
+        {
+            State temp;
+
+            temp = inputtext.addRoundKey(inputkey, 0);
+
+            for (int i = 1; i <= 10; i++)
+            {
+                temp = temp.shiftRowsInv();
+                temp = temp.subBytesInv();
+                temp = temp.addRoundKey(inputkey, i);
+                if (i != 10)
+                    temp = temp.mixColumnsInv();
+            }
+
+            return temp;
         }
     }
 }

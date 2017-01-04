@@ -15,3 +15,12 @@ C:\Users\kivistik.liis\Documents\Fontys2016-2017\CRY\AES\CryAes\CryAes\Aes\obj\D
 C:\Users\kivistik.liis\Documents\Fontys2016-2017\CRY\AES\CryAes\CryAes\Aes\obj\Debug\Aes.FormAes.resources
 C:\Users\kivistik.liis\Documents\Fontys2016-2017\CRY\AES\CryAes\CryAes\Aes\obj\Debug\Aes.Properties.Resources.resources
 C:\Users\kivistik.liis\Documents\Fontys2016-2017\CRY\AES\CryAes\CryAes\Aes\obj\Debug\Aes.csproj.GenerateResource.Cache
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\bin\Debug\Aes.exe.config
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.exe
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.pdb
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\bin\Debug\Aes.exe
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\bin\Debug\Aes.pdb
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.csprojResolveAssemblyReference.cache
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.FormAes.resources
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.Properties.Resources.resources
+E:\Fontys\Cryptography\AES\AES-Project-for-Cry\Aes\obj\Debug\Aes.csproj.GenerateResource.Cache
