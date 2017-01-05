@@ -40,6 +40,8 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbResult = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbKey
@@ -168,11 +170,33 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 444);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 20);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Result :";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbResult
+            // 
+            this.lbResult.Location = new System.Drawing.Point(100, 441);
+            this.lbResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbResult.Multiline = true;
+            this.lbResult.Name = "lbResult";
+            this.lbResult.Size = new System.Drawing.Size(459, 90);
+            this.lbResult.TabIndex = 28;
+            // 
             // FormAes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 489);
+            this.ClientSize = new System.Drawing.Size(587, 554);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbResult);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
@@ -207,6 +231,8 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox lbResult;
     }
 }
 

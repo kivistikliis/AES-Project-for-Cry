@@ -59,10 +59,10 @@ namespace Aes
 
             byte[] inputPlain = readAsciiString(tbPlain.Text);
             State inputState = new State(inputPlain);
-
+            
             State outputState=EncryptionProgress(inputState,key);
 
-            MessageBox.Show("The cyphertext is:\n"+outputState.ToMatrixString());
+            lbResult.Text = "The cyphertext is:" + outputState.ToString();
         }
 
         public State EncryptionProgress(State inputtext,Key inputkey)
@@ -93,22 +93,22 @@ namespace Aes
 
             State original = DecryptionProgress(cyphertext, key);
 
-            MessageBox.Show("The original text is:\n" +original.ToString());
-
+            lbResult.Text = "The original text is:" + original.HexToAscii();
+            //MessageBox.Show(original.ToMatrixString());
         }
-
+        
         public State DecryptionProgress(State inputtext, Key inputkey)
         {
             State temp;
 
-            temp = inputtext.addRoundKey(inputkey, 0);
+            temp = inputtext.addRoundKey(inputkey, 10);
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = 9; i >=0; i--)
             {
                 temp = temp.shiftRowsInv();
                 temp = temp.subBytesInv();
                 temp = temp.addRoundKey(inputkey, i);
-                if (i != 10)
+                if (i != 0)
                     temp = temp.mixColumnsInv();
             }
 

@@ -282,5 +282,15 @@ namespace Aes
             }
             return (s);
         }
+
+        public string HexToAscii()
+        {
+            string s="";
+            for (int i = 0; i < buf.GetLength(0); i++)
+                for (int j = 0; j < buf.GetLength(1); j++)
+                    s += (char)buf[j, i];
+
+            return s;
+        }
     }
 }
