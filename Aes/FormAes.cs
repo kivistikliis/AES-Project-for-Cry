@@ -62,7 +62,8 @@ namespace Aes
             
             State outputState=EncryptionProgress(inputState,key);
 
-            result.Text = "The cyphertext is:" + outputState.ToString();
+            tbCipher.Text = outputState.ToString();
+            tbResult.Text = outputState.ToString();
 
             //MessageBox.Show("The cyphertext is:\n"+outputState.ToMatrixString());
 
@@ -92,12 +93,14 @@ namespace Aes
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
 
-            byte[] inputCypher = readHexString(tbPlain.Text);
+            byte[] inputCypher = readHexString(tbCipher.Text);
             State cyphertext = new State(inputCypher);
 
             State original = DecryptionProgress(cyphertext, key);
 
-            result.Text = "The original text is:" + original.HexToAscii();
+            tbPlain.Text = original.HexToAscii();
+
+            tbResult.Text = original.HexToAscii();
             
 
           //MessageBox.Show("The original text is:\n" +original.ToString());
