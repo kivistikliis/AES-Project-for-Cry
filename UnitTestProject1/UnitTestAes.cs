@@ -24,7 +24,7 @@ namespace UnitTestProject
 
             start = start.subBytes();
 
-            Console.Out.WriteLine("subBytes:\n" + start); 
+            Console.Out.WriteLine("subBytes:\n" + start);
             Assert.AreEqual(start.ToString(), expectedState.ToString());
         }
         [TestMethod]
@@ -94,10 +94,10 @@ namespace UnitTestProject
             State expectedState = new State(expectedStateData);
             System.Text.Encoding encoding = System.Text.Encoding.UTF8;
             byte[] inputPlain = encoding.GetBytes(s);
-            
+
             Key key = new Key(inputKey);
             State start = new State(inputPlain);
-            
+
             start = start.addRoundKey(key, 0);
 
             Console.Out.WriteLine("add0:\n" + start);
@@ -115,14 +115,83 @@ namespace UnitTestProject
             State expectedState = new State(expectedStateData);
             System.Text.Encoding encoding = System.Text.Encoding.UTF8;
             byte[] inputPlain = encoding.GetBytes(s);
-            
+
             Key key = new Key(inputKey);
             State start = new State(inputPlain);
-            
+
             start = start.addRoundKey(key, 7);
 
             Console.Out.WriteLine("add7:\n" + start);
             Assert.AreEqual(start.ToString(), expectedState.ToString());
+        }
+
+
+        [TestMethod]
+        public void TestSubBytesInv()
+        {
+            byte[] StartingStateData = { 0x10, 0x11, 0x12, 0x13, 
+                                     0x14, 0x15, 0x16, 0x17, 
+                                     0x18, 0x19, 0x20, 0x21, 
+                                     0x22, 0x23, 0x24, 0x25 };
+            State StartState = new State(StartingStateData);
+
+
+            byte[] expectedStateData = {0x7c, 0xe3, 0x39, 0x82,
+                                   0x9b, 0x2f, 0xff, 0x87,
+                                   0x34, 0x8e, 0x54, 0x7b,
+                                   0x94, 0x32, 0xa6, 0xc2};
+
+            State expectedState = new State(expectedStateData);
+
+            State testState = StartState.subBytesInv();
+
+            Console.Out.WriteLine("InversesubBytes:\n" + testState.ToString());
+            Assert.AreEqual(expectedState.ToString(), testState.ToString());
+
+        }
+
+        [TestMethod]
+        public void TestMixColumnsInv()
+        {
+            byte[] StartingStateData = { 0x10, 0x11, 0x12, 0x13, 
+                                     0x14, 0x15, 0x16, 0x17, 
+                                     0x18, 0x19, 0x20, 0x21, 
+                                     0x22, 0x23, 0x24, 0x25 };
+            State StartState = new State(StartingStateData);
+
+
+            byte[] expectedStateData = {0x1a, 0x1f, 0x18, 0x1d,
+                                   0x1e, 0x1b, 0x1c, 0x19,
+                                   0xfa, 0x8b, 0xc2, 0xb3,
+                                   0x38, 0x35, 0x3e, 0x33};
+
+            State expectedState = new State(expectedStateData);
+
+            State testState = StartState.mixColumnsInv();
+
+            Console.Out.WriteLine("InversesubBytes:\n" + testState.ToString());
+            Assert.AreEqual(expectedState.ToString(), testState.ToString());
+        }
+
+        [TestMethod]
+        public void TestShiftRowsInv()
+        {
+            byte[] StartingStateData = { 0x10, 0x11, 0x12, 0x13, 
+                                     0x14, 0x15, 0x16, 0x17, 
+                                     0x18, 0x19, 0x20, 0x21, 
+                                     0x22, 0x23, 0x24, 0x25 };
+            State StartState = new State(StartingStateData);
+
+            byte[] expectedStateData = { 0x10, 0x23, 0x20, 0x17, 
+                                         0x14, 0x11, 0x24, 0x21, 
+                                         0x18, 0x15, 0x12, 0x25, 
+                                         0x22, 0x19, 0x16, 0x13  };
+            State expectedState = new State(expectedStateData);
+
+            StartState = StartState.shiftRowsInv();
+
+            Console.Out.WriteLine("shift:\n" + StartState);
+            Assert.AreEqual(StartState.ToString(), expectedState.ToString());
         }
     }
 }

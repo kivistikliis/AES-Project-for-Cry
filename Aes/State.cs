@@ -155,6 +155,7 @@ namespace Aes
         public State subBytes()
         {
             State s = new State();
+            
 
             for (int r = 0; r < nrofRow; r++)
             {
@@ -220,7 +221,7 @@ namespace Aes
             {
                 for (int c = 0; c < nrofCol; c++)
                 {
-                    s.buf[r, c] = buf[r, ((3 * r) + c) % 4];
+                    s.buf[r, c] = buf[r, ((3 * r) + c) % 4]; //or buf[r, (r + c) % 4] = s.buf[r, c];
                     //Console.Out.WriteLine("state[" + r + "," + c + "]=" + s.buf[r, c]);
                 }
             }
